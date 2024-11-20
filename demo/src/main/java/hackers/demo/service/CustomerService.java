@@ -35,7 +35,7 @@ public class CustomerService {
 
     public String login(loginRequest request) {
         Customer customer = getCustomer(request.email());
-        if(customer.getEmail().equals(request.email()))
+        if(customer.getEmail().equals(request.email()) && customer.getPassword().equals(request.password()))
         {
             return "Logged in";
         }
