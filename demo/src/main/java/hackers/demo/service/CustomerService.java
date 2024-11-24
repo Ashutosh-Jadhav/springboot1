@@ -9,6 +9,7 @@ import hackers.demo.repo.CustomerRepo ;
 import lombok.RequiredArgsConstructor ;
 import org.springframework.stereotype.Service;
 import hackers.demo.helper.EncryptionService;
+import hackers.demo.helper.JWTHelper;
 
 import java.util.Optional;
 import java.util.UUID ;
@@ -20,6 +21,7 @@ public class CustomerService {
     private final CustomerRepo repo ;
     private final CustomerMapper mapper ;
     private final EncryptionService encryptionService;
+    private final JWTHelper jwtHelper;
     public String createCustomer(CustomerRequest request) {
         Customer customer = mapper.toEntity(request);
         customer.setPassword(encryptionService.encode(customer.getPassword()));
@@ -42,7 +44,7 @@ public class CustomerService {
         {
             return "Not Logged in";
         }
-        return "logged in";
+        return jwtHelper.generateToken(request.email());
     }
 
 }

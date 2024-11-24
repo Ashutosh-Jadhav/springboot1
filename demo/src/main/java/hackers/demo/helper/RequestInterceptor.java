@@ -8,7 +8,7 @@ import org.springframework.web.servlet.HandlerInterceptor;
 
 @Component
 @RequiredArgsConstructor
-public class RequestInterceptor {
+public class RequestInterceptor implements HandlerInterceptor {
     private final JWTHelper jwtUtil;
 
     @Override
