@@ -8,9 +8,10 @@ import hackers.demo.mapper.CustomerMapper ;
 import hackers.demo.repo.CustomerRepo ;
 import lombok.RequiredArgsConstructor ;
 import org.springframework.stereotype.Service;
+import hackers.demo.helper.EncryptionService;
 
 import java.util.Optional;
-
+import java.util.UUID ;
 import static java.lang.String.format;
 
 @Service
@@ -18,8 +19,10 @@ import static java.lang.String.format;
 public class CustomerService {
     private final CustomerRepo repo ;
     private final CustomerMapper mapper ;
+    private final EncryptionService encryptionService;
     public String createCustomer(CustomerRequest request) {
         Customer customer = mapper.toEntity(request);
+        customer.setPassword(encryptionService.encode(customer.getPassword()));
         repo.save(customer);
         return "Created";
     }
@@ -35,11 +38,11 @@ public class CustomerService {
 
     public String login(loginRequest request) {
         Customer customer = getCustomer(request.email());
-        if(customer.getEmail().equals(request.email()) && customer.getPassword().equals(request.password()))
+        if(!encryptionService.validates(request.password(), customer.getPassword()))
         {
-            return "Logged in";
+            return "Not Logged in";
         }
-        return "Not logged in";
+        return "logged in";
     }
 
 }
