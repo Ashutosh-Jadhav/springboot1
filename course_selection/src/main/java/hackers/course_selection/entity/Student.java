@@ -34,11 +34,11 @@ public class Student {
     private String photographPath;
 
     @Column(name = "cgpa")
-    private String cgpa;
+    private int cgpa;
 
     @Column(name = "total_credits")
     private int totalCredits;
 
     @Column(name = "graduation_year")
-    private String graduationYear;
+    private int graduationYear;
 }

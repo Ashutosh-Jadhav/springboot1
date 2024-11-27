@@ -35,12 +35,12 @@ public record StudentRequest(
         String photographPath,
 
         @JsonProperty("cgpa")
-        String cgpa,
+        int cgpa,
 
         @JsonProperty("total_credits")
         int totalCredits,
 
         @JsonProperty("graduation_year")
-        String graduationYear
+        int graduationYear
 ) {
 }
