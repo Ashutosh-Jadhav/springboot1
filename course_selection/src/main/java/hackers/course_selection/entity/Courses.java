@@ -13,7 +13,7 @@ import lombok.*;
 public class Courses {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long courseId;
+    private Long course_id;
 
     @Column(name = "course_code",nullable = false,unique = true)
     private String courseCode;

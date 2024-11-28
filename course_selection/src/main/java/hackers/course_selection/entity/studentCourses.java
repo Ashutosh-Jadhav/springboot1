@@ -2,6 +2,7 @@ package hackers.course_selection.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.springframework.beans.factory.annotation.Autowired;
 
 @Data
 @Builder
@@ -9,7 +10,6 @@ import lombok.*;
 @AllArgsConstructor
 @Entity
 @Table(name = "student_courses")
-
 public class studentCourses {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
