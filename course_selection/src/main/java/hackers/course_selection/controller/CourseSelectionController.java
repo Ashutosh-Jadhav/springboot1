@@ -101,17 +101,17 @@ public class CourseSelectionController {
         return ResponseEntity.ok(courses);
     }
 
-    @PostMapping("/{studentId}/select")
-    public ResponseEntity<String> selectCourse(
-            @PathVariable Long studentId,
-            @RequestBody List<Long> courseIds) {
-        boolean success = studentCoursesService.enrollStudentInCourses(studentId, courseIds);
-        if (success) {
-            return ResponseEntity.ok("Courses selected successfully!");
-        } else {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Failed to select courses.");
-        }
-    }
+//    @PostMapping("/{studentId}/select")
+//    public ResponseEntity<String> selectCourse(
+//            @PathVariable Long studentId,
+//            @RequestBody List<Long> courseIds) {
+//        boolean success = studentCoursesService.enrollStudentInCourses(studentId, courseIds);
+//        if (success) {
+//            return ResponseEntity.ok("Courses selected successfully!");
+//        } else {
+//            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Failed to select courses.");
+//        }
+//    }
 
 
 }
